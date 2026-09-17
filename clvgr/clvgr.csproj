@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PublishAot>true</PublishAot>
+    <PublishTrimmed>true</PublishTrimmed>
+    <OptimizationPreference>Speed</OptimizationPreference>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.36.1" />
+    <PackageReference Include="Grpc.Tools" Version="2.83.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.12" />
+    <PackageReference Include="Terminal.Gui" Version="2.6.0-develop.61" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="clvgr" />
+    <Using Include="clvgr.Cli" />
+    <Using Include="clvgr.Configuration" />
+    <Using Include="clvgr.Controls" />
+    <Using Include="clvgr.Core" />
+    <Using Include="clvgr.Models" />
+    <Using Include="clvgr.Extensions" />
+    <Using Include="Terminal.Gui.Configuration" />
+    <Using Include="Terminal.Gui.App" />
+    <Using Include="Terminal.Gui.Drawing" />
+    <Using Include="Terminal.Gui.ViewBase" />
+    <Using Include="Terminal.Gui.Views" />
+    <Using Include="Terminal.Gui.Input" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="secretsFilePayload.proto" Role="Main" />
+  </ItemGroup>
+
+</Project>

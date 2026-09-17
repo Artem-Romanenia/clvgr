@@ -1,0 +1,95 @@
+{
+  "Themes": {
+    "clvgr": {
+      "Dialog": {
+        "DefaultBorderStyle": "Rounded"
+      },
+      "MessageBox": {
+        "DefaultBorderStyle": "Rounded"
+      },
+      "MenuBar": {
+        "DefaultBorderStyle": "Rounded"
+      },
+      "Menu": {
+        "DefaultBorderStyle": "Rounded"
+      },
+      "Schemes": {
+        "Base": {
+          "Normal": {
+            "Foreground": "#bd2d3f",
+            "Background": "#100005",
+            "Style": "None"
+          },
+          "CodeIdentifier": {
+            "Foreground": "#ccbbbb",
+            "Background": "#220007",
+            "Style": "Bold"
+          },
+          "CodeConstant": {
+            "Foreground": "#a22a7b",
+            "Background": "#220007",
+            "Style": "None"
+          },
+          "CodeComment": {
+            "Foreground": "#b27b3c",
+            "Background": "#220007",
+            "Style": "Italic"
+          }
+        },
+        "Error": {
+          "Normal": {
+            "Foreground": "#bd2d3f",
+            "Background": "Black",
+            "Style": "None"
+          }
+        },
+        "Dialog": {
+          "Normal": {
+            "Foreground": "#bd2d3f",
+            "Background": "#220005",
+            "Style": "None"
+          },
+          "Active": {
+            "Foreground": "black",
+            "Background": "#bd2d3f",
+            "Style": "None"
+          },
+          "Focus": {
+            "Foreground": "black",
+            "Background": "#bd2d3f",
+            "Style": "None"
+          },
+          "Editable": {
+            "Foreground": "#ccbbbb",
+            "Background": "#100005",
+            "Style": "None"
+          }
+        },
+        "Menu": {
+          "Normal": {
+            "Foreground": "#bd2d3f",
+            "Background": "#220007",
+            "Style": "None"
+          }
+        },
+        "TableCustom": {
+          "Normal": {
+            "Foreground": "#ccbbbb",
+            "Background": "#220007",
+            "Style": "None"
+          },
+          "Active": {
+            "Foreground": "black",
+            "Background": "#bd2d3f",
+            "Style": "None"
+          },
+          "Focus": {
+            "Foreground": "black",
+            "Background": "#bd2d3f",
+            "Style": "None"
+          }
+        }
+      }
+    }
+  }
+}
