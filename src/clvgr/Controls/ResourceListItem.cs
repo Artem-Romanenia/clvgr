@@ -21,7 +21,7 @@ internal class ResourceListItem : View
 
         var cs = GetScheme();
 
-        int colWidth = (GetContentWidth()) / 3;
+        int colWidth = GetContentWidth() / 3;
 
         SetAttribute(HasFocus ? cs.Focus : cs.CodeIdentifier);
         AddStr(FormatString($"{Resource.ResourceName}{(Resource.ShortName is { Length: > 0 } ? $" ({Resource.ShortName})" : string.Empty)}", colWidth));
@@ -37,11 +37,11 @@ internal class ResourceListItem : View
         return true;
     }
 
-    private string FormatString(string s, int width)
+    private static string FormatString(string s, int width)
     {
         if (s.Length > width)
         {
-            s = s.Substring(0, width - 3) + "...";
+            s = string.Concat(s.AsSpan(0, width - 3), "...");
         }
         else if (s.Length < width)
         {

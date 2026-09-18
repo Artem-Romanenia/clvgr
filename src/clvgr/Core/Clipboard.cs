@@ -14,6 +14,7 @@ internal static partial class Clipboard
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             services.AddSingleton<IClipboardAccessor, ClipboardWindows>();
-        } else throw new NotSupportedException($"{RuntimeInformation.OSDescription} is not supported.");
+        }
+        else throw new NotSupportedException($"{RuntimeInformation.OSDescription} is not supported.");
     }
 }

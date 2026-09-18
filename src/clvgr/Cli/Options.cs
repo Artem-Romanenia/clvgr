@@ -1,16 +1,23 @@
 ﻿using CommandLine;
+using Serilog.Events;
 
 namespace clvgr.Cli;
 
+public abstract class Options
+{
+    [Option('l', "logLevel", Required = false, HelpText = "Log level.")]
+    public LogEventLevel? LogLevel { get; set; }
+}
+
 [Verb("run", isDefault: true, HelpText = "Run terminal interface.")]
-public class Options
+public class RunOptions : Options
 {
     [Option('p', "path", Required = false, HelpText = "Path to a secrets file.")]
     public string? Path { get; set; }
 }
 
 [Verb("clip", HelpText = "Copy secret of a specified resource to clipboard.")]
-public class ClipOptions()
+public class ClipOptions : Options
 {
     [Value(0, Required = true, HelpText = "Resource Short Name.")]
     public required string ShortName { get; set; }
@@ -23,7 +30,7 @@ public class ClipOptions()
 }
 
 [Verb("print", HelpText = "Print resource information.")]
-public class PrintOptions()
+public class PrintOptions : Options
 {
     [Value(0, Required = true, HelpText = "Resource Short Name.")]
     public required string ShortName { get; set; }

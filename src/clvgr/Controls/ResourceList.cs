@@ -50,7 +50,7 @@ internal class ResourceList : View
         try
         {
             _cryptor.Decrypt(selectedItem.Resource.Secret.ToArray(), _clipboardAccessor.PutToClipboard);
-            using AutoclosePopup p = new AutoclosePopup("Secret was copied to clipboard.");
+            using var p = new AutoclosePopup("Secret was copied to clipboard.");
 
             this.PresentApp.Run(p);
         }
@@ -117,10 +117,7 @@ internal class ResourceList : View
         return true;
     }
 
-    private void OnResourcesChanged(object? sender, NotifyCollectionChangedEventArgs args)
-    {
-        ShowResources();
-    }
+    private void OnResourcesChanged(object? sender, NotifyCollectionChangedEventArgs args) => ShowResources();
 
     private void ShowResources()
     {

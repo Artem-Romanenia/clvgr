@@ -2,7 +2,7 @@
   "profiles": {
     "clvgr": {
       "commandName": "Project",
-      "commandLineArgs": ""
+      "commandLineArgs": "-l Debug"
     }
   }
 }

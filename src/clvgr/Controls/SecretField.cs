@@ -139,6 +139,6 @@ internal class SecretField(ICryptor cryptor, byte[]? encryptedSecretBytes = null
         {
             _secretBytesEncrypted = cryptor.Encrypt(_secretBytes.AsSpan(0, _pos));
             _secretBytes.Clear();
-       }
+        }
     }
 }

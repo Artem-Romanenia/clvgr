@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace clvgr.Controls;
+﻿namespace clvgr.Controls;
 
 internal class SettingsDialog : Dialog
 {

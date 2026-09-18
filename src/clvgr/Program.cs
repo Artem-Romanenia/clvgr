@@ -9,12 +9,12 @@ namespace clvgr;
 
 internal class Program
 {
-    [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(Options))]
+    [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(RunOptions))]
     [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(ClipOptions))]
     [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(PrintOptions))]
     private static void Main(string[] args)
     {
-        int BootstrapAndRun(Action<IServiceProvider> op)
+        int BootstrapAndRun(Options opts, Action<IServiceProvider> op)
         {
             using IApplication app = Application.Create();
             using Window window = new() { BorderStyle = LineStyle.None };
@@ -34,11 +34,14 @@ internal class Program
             builder.Services.AddSingleton<Func<SecretsFileManager, ResourceList>>(services => sfm => ActivatorUtilities.CreateInstance<ResourceList>(services, sfm));
             builder.Services.RegisterEncryption();
             builder.Services.RegisterClipboard();
-            builder.Services.RegisterLogger();
+            builder.Services.RegisterLogger(opts.LogLevel);
 
             var host = builder.Build();
 
-            host.Services.GetRequiredService<ILogger<Program>>().LogInformation("Startred.");
+            var logger = host.Services.GetRequiredService<ILogger<Program>>();
+            logger.LogDebug("Starting application.");
+            logger.LogDebug($"Logs location: {LogsFilePath}");
+            logger.LogDebug($"Settings location: {SettingsManager.SettingsFilePath}");
 
             try
             {
@@ -46,18 +49,18 @@ internal class Program
             }
             catch (Exception ex)
             {
-                host.Services.GetRequiredService<ILogger>().LogError(ex, "Unhandled error.");
+                logger.LogError(ex, "Unhandled error.");
                 Console.WriteLine($"Unhandled error. See the logs file for more details: {LogsFilePath}.");
             }
 
             return 0;
         }
 
-        Parser.Default.ParseArguments<Options, ClipOptions, PrintOptions>(args)
+        Parser.Default.ParseArguments<RunOptions, ClipOptions, PrintOptions>(args)
             .MapResult(
-                (Options opts) => BootstrapAndRun(sp => Verbs.Run(opts, sp)),
-                (ClipOptions opts) => BootstrapAndRun(sp => Verbs.Clip(opts, sp)),
-                (PrintOptions opts) => BootstrapAndRun(sp => Verbs.Print(opts, sp)),
+                (RunOptions opts) => BootstrapAndRun(opts, sp => Verbs.Run(opts, sp)),
+                (ClipOptions opts) => BootstrapAndRun(opts, sp => Verbs.Clip(opts, sp)),
+                (PrintOptions opts) => BootstrapAndRun(opts, sp => Verbs.Print(opts, sp)),
                 errs => 0
             );
     }

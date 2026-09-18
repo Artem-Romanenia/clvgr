@@ -2,7 +2,9 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
+    <File Path="Directory.Packages.props" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="clvgr/clvgr.csproj" />
+  <Project Path="src/clvgr/clvgr.csproj" />
+  <Project Path="tests/clvgr.IntegrationTests/clvgr.IntegrationTests.csproj" Id="ac9a3e2d-b514-4a50-a8e8-9e99297d584a" />
 </Solution>

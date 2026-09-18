@@ -23,18 +23,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="Google.Protobuf" Version="3.36.1" />
-    <PackageReference Include="Grpc.Tools" Version="2.83.0">
+    <PackageReference Include="CommandLineParser" />
+    <PackageReference Include="Google.Protobuf" />
+    <PackageReference Include="Grpc.Tools">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
-    <PackageReference Include="Serilog.Extensions.Hosting" Version="10.0.0" />
-    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
-    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.12" />
-    <PackageReference Include="Terminal.Gui" Version="2.6.0-develop.61" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" />
+    <PackageReference Include="Terminal.Gui" />
   </ItemGroup>
 
   <ItemGroup>

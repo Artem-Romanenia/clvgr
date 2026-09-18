@@ -73,7 +73,7 @@ internal class AppManager(
             var secretsFileManagerConstructor = secretsFileManagerFactory.Preconstruct(secretsFilePath);
 
             SecretsFileManager? secretsFileManager = null;
-            using MasterPasswordReaderDialog passwordDialog = new(secretsFilePath, passwordBytes 
+            using MasterPasswordReaderDialog passwordDialog = new(secretsFilePath, passwordBytes
                 => secretsFileManager = secretsFileManagerConstructor.Construct(passwordBytes));
 
             app.Run(passwordDialog);

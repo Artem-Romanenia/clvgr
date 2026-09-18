@@ -5,7 +5,7 @@ namespace clvgr.Cli;
 
 internal static class Verbs
 {
-    public static void Run(Options opts, IServiceProvider provider)
+    public static void Run(RunOptions opts, IServiceProvider provider)
     {
         var appManager = provider.GetRequiredService<AppManager>();
 

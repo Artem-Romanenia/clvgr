@@ -37,7 +37,7 @@ internal class EllipsedLabel : View
 
     protected override bool OnDrawingContent(DrawContext? context)
     {
-        Move(0,0);
+        Move(0, 0);
 
         var cs = GetScheme();
         int width = GetContentWidth();

@@ -1,0 +1,33 @@
+# Build and output artifacts
+**/bin/
+**/obj/
+**/out/
+**/dist/
+
+# IDE and source control configurations
+.git/
+.gitignore
+.vs/
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# Docker files
+Dockerfile
+.dockerignore
+docker-compose*
+
+# Local environment and secrets
+*.usersecret
+appsettings.Development.json
+appsettings.Local.json
+*.local
+
+# Logs and diagnostics
+*.log
+.crashdump/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
