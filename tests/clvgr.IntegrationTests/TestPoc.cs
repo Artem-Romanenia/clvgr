@@ -22,7 +22,7 @@ public class TestPoc
     [SetUp]
     public void ContainerSetup()
     {
-        _container = new ContainerBuilder("tui-test")
+        _container = new ContainerBuilder("clvgr-tui-test")
             .WithBindMount(_scriptsPath, "/tests")
             .WithCommand("/tests/poc-test.sh")
             .Build();
