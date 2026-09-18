@@ -15,6 +15,7 @@ internal class ResourceDialog : Dialog<Resource>
 
     public ResourceDialog(ICryptor cryptor, Resource? resource)
     {
+        Title = resource is { } ? "Edit resource" : "Create resource";
         int fieldCounter = 0;
 
         var label = CreateLabel("Resource name", ++fieldCounter);

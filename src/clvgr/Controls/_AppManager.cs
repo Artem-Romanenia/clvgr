@@ -80,6 +80,7 @@ internal class AppManager(
 
             if (secretsFileManager is null)
             {
+                secretsFileManagerConstructor.DestroyIfEmpty();
                 return;
             }
 
@@ -174,6 +175,7 @@ internal class AppManager(
             }
 
             CurrentSecretsFileManager.Dispose();
+            CurrentSecretsFileManager = null;
         }
 
         return true;

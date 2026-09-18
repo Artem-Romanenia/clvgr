@@ -8,6 +8,12 @@ internal class SecretsFileManagerFactory(ICryptorFactory cryptorFactory)
     public SecretsFileManager.Constructor Preconstruct(string path)
     {
         byte[] salt = new byte[Constants.SaltLength];
+
+        if (Path.GetDirectoryName(path) is string dir)
+        {
+            Directory.CreateDirectory(dir);
+        }
+
         FileStream secretsFileStream = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
 
         if (secretsFileStream.Length > 0)

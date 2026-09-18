@@ -75,15 +75,12 @@ internal class SecretsFileManager : IDisposable
 
     public void Dispose()
     {
-        string path = _secretsFileStream.Name;
         long len = _secretsFileStream.Length;
+        string path = _secretsFileStream.Name;
 
         _secretsFileStream.Close();
 
-        if (len == 0)
-        {
-            File.Delete(path);
-        }
+        if (len is 0) File.Delete(path);
     }
 
     public class Constructor(ICryptorFactory cryptorFactory, byte[] salt, FileStream secretsFileStream)
@@ -92,5 +89,15 @@ internal class SecretsFileManager : IDisposable
 
         public SecretsFileManager Construct(ReadOnlySpan<byte> passwordPlaintext)
             => new(salt, secretsFileStream, cryptorFactory.Create(passwordPlaintext, salt));
+
+        public void DestroyIfEmpty()
+        {
+            long len = secretsFileStream.Length;
+            string path = secretsFileStream.Name;
+
+            secretsFileStream.Close();
+
+            if (len is 0) File.Delete(path);
+        }
     }
 }

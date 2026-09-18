@@ -9,9 +9,15 @@ internal static class Verbs
     {
         var appManager = provider.GetRequiredService<AppManager>();
 
-        if ((opts.Path ?? UserSettings.Defaults.LastSecretsFile) is string path)
+        // If user deliberately passed the file path, proceed with entering password
+        if (opts.Path is string optionsPath)
         {
-            appManager.InitializeSecretsFileManager(path);
+            appManager.InitializeSecretsFileManager(optionsPath);
+        }
+        // If Last Secret file was remembered but doesn't exist anymore, ignore
+        else if (UserSettings.Defaults.LastSecretsFile is string preferencePath && File.Exists(preferencePath))
+        {
+            appManager.InitializeSecretsFileManager(preferencePath);
         }
 
         appManager.RunMainWindow();
